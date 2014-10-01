@@ -1,4 +1,6 @@
 hello
 =====
 
-simple hello world go app &amp; docker container for testing
+this is just for testing out deployment setups.
+
+simple hello world web server written in go with docker build utilities.
