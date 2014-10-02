@@ -9,12 +9,12 @@ import (
 
 var (
 	message string
-	port    int
+	address string
 )
 
 func init() {
 	flag.StringVar(&message, "message", "there", "a message to print")
-	flag.IntVar(&port, "port", 8080, "port to listen on")
+	flag.StringVar(&address, "address", "0.0.0.0:80", "address/port to listen on")
 }
 
 func main() {
@@ -22,5 +22,5 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello %s", message)
 	})
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
+	log.Fatal(http.ListenAndServe(address, nil))
 }
