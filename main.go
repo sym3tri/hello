@@ -20,7 +20,7 @@ func init() {
 func main() {
 	flag.Parse()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello %s", message)
+		fmt.Fprintf(w, "Hello %s\n", message)
 	})
 	log.Printf("listening on %s...", address)
 	log.Fatal(http.ListenAndServe(address, nil))
