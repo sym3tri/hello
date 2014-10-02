@@ -1,0 +1,15 @@
+# example systemd unit file
+
+[Unit]
+Description=Hello
+
+[Service]
+User=core
+ExecStartPre=/usr/bin/docker pull sym3tri/hello
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStart=/usr/bin/docker run \
+  --name %n \
+  --rm \
+  -p 8001:8080 \
+  sym3tri/hello:latest /opt/hello --message=from-%n --address=0.0.0.0:8080
+ExecStop=/usr/bin/docker kill %n
