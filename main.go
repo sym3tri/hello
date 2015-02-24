@@ -7,6 +7,8 @@ import (
 	"net/http"
 )
 
+const version = "v1.0.0"
+
 var (
 	message string
 	address string
@@ -20,8 +22,10 @@ func init() {
 func main() {
 	flag.Parse()
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello %s\n", message)
+		fmt.Fprintf(w, "Hello %s.\n", message)
+		fmt.Fprintf(w, "Version: %s\n", version)
 	})
 	log.Printf("listening on %s...", address)
+	log.Printf("Version: %s", version)
 	log.Fatal(http.ListenAndServe(address, nil))
 }
