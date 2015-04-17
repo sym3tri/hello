@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 echo "building with docker. might take a while to pull..."
-docker run --rm -v `pwd`:/usr/src/hello -w /usr/src/hello golang:1.3 ./build
+docker run --rm -v `pwd`:/go/src/github.com/sym3tri/hello -w /go/src/github.com/sym3tri/hello golang:1.4 ./build
 
 echo "building docker image..."
 docker build -q -t sym3tri/hello .
