@@ -12,8 +12,6 @@
 # Invoke ./cover for HTML output
 COVER=${COVER:-"-cover"}
 
-source ./build
-
 TESTABLE="server"
 FORMATTABLE="$TESTABLE cmd/hello"
 
