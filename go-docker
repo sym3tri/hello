@@ -18,4 +18,4 @@ for VAR in ${DOCKER_ENV//,/ }; do
 done
 
 echo "running with docker, might take a while to pull the image..."
-docker run $ENV_STR --rm --net=host -v `pwd`:/go/src/$REPO -w /go/src/$REPO golang:1.3.3 $@
+docker run $ENV_STR --rm --net=host -v `pwd`:/go/src/$REPO -w /go/src/$REPO quay.io/sym3tri/go-build::1.3.3 $@
