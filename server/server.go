@@ -5,6 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -25,6 +27,7 @@ func (s *Server) HTTPHandler() http.Handler {
 	mux.Handle("/prestop", s.prestopHandler())
 	mux.Handle("/poststart", s.poststartHandler())
 	mux.Handle("/mount/", s.mountHandler())
+	mux.Handle("/environment", s.environmentHandler())
 	return http.Handler(mux)
 }
 
@@ -48,6 +51,13 @@ func (s *Server) poststartHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Println("post-start")
 		fmt.Fprint(w, "post-start")
+	}
+}
+
+func (s *Server) environmentHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		log.Println("environment")
+		fmt.Fprint(w, strings.Join(os.Environ(), "\n"))
 	}
 }
 
